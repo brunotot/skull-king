@@ -1,8 +1,0 @@
-{
-  "name": "skull-king",
-  "version": "0.0.0",
-  "engines": {
-    "node": "16.14.2",
-    "npm": "9.4.1"
-  }
-}
