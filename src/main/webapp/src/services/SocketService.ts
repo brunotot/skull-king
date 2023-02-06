@@ -7,10 +7,11 @@ import AuthService from "./AuthService";
 const DEST_PREFIX_APP = "/topic";
 const DEST_PREFIX_USER = "/user";
 const DEST_PREFIX_SERVER = "/ws";
-const API_URI = "http://192.168.1.68:8080";
 
 function buildStompClient() {
-	const stompClient = over(new SockJS(`${API_URI}${DEST_PREFIX_SERVER}`));
+	const stompClient = over(
+		new SockJS(`${import.meta.env.VITE_API_URI}${DEST_PREFIX_SERVER}`)
+	);
 	stompClient.debug = () => {};
 	return stompClient;
 }

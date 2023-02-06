@@ -15,9 +15,6 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import static brunotot.skullking.web.controller.AuthenticationController.LOGIN_ENDPOINT;
-import static brunotot.skullking.web.controller.AuthenticationController.REGISTER_ENDPOINT;
-
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -51,7 +48,9 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers(HttpMethod.POST, LOGIN_ENDPOINT, REGISTER_ENDPOINT).permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/login", "/api/auth/logout", "/api/auth/logout").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/health", "/api/ws/**").permitAll()
+                        .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll()
                 );
         return http.build();

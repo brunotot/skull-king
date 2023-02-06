@@ -1,7 +1,6 @@
 package brunotot.skullking.security.filter;
 
 import brunotot.skullking.security.config.UserAuthenticationProvider;
-import brunotot.skullking.web.controller.AuthenticationController;
 import brunotot.skullking.web.dto.LoginDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
@@ -29,7 +28,7 @@ public class UsernamePasswordAuthFilter extends OncePerRequestFilter {
             final HttpServletResponse response,
             final FilterChain filterChain
     ) throws ServletException, IOException {
-        if (AuthenticationController.LOGIN_ENDPOINT.equals(request.getServletPath())
+        if ("/api/auth/login".equals(request.getServletPath())
                 && HttpMethod.POST.matches(request.getMethod())) {
             LoginDto loginDto = MAPPER.readValue(request.getInputStream(), LoginDto.class);
             try {

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SocketServiceImpl implements SocketService {
-    public static final String DEST_PREFIX_WEB_SOCKET = "/ws";
+    public static final String DEST_PREFIX_WEB_SOCKET = "/api/ws";
     public static final String DEST_PREFIX_CLIENT = "/topic";
     public static final String DEST_PREFIX_APP = "/app";
     public static final String DEST_PREFIX_USER = "/user";

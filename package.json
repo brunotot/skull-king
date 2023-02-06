@@ -6,7 +6,7 @@
 		"build": ""
 	},
 	"engines": {
-		"node": "16.14.2",
+		"node": "19.6.0",
 		"npm": "9.4.1"
 	},
 	"dependencies": {

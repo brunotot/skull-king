@@ -7,7 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/game/{gameId}")
+@RequestMapping("/api/game/{gameId}")
 public class GameStateController {
     private final GameStateService gameStateService;
 

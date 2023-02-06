@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class JWTAuthFilter extends OncePerRequestFilter {
-    private static final String SOCKET_ENDPOINT_PREFIX = "/ws/";
+    private static final String SOCKET_ENDPOINT_PREFIX = "/api/ws/";
 
     private final UserAuthenticationProvider provider;
 

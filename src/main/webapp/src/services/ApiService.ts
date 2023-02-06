@@ -1,13 +1,11 @@
 import axios from "axios";
 import AxiosRequestService from "./AxiosRequestService";
 
-const API_URI = "http://192.168.1.68:8080";
-
 export default abstract class ApiService {
 	private uri: string;
 
 	constructor(contextPath: string) {
-		this.uri = `${API_URI}${contextPath}`;
+		this.uri = `${import.meta.env.VITE_API_URI}${contextPath}`;
 	}
 
 	protected async get<T>(endpoint: string = "") {
