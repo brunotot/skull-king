@@ -4,5 +4,5 @@ build/**
 src/main/webapp/dist/**
 src/main/webapp/node_modules/**
 src/main/webapp/.env.local
-src/main/resources/application-*.properties
+src/main/resources/application-local.properties
 HELP.md
