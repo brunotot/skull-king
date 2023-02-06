@@ -12,14 +12,6 @@ public final class ApplicationProperties {
         return message("security.allowed-origin.patterns").split(";");
     }
 
-    public static String getSecurityJwtTokenSecret() {
-        return message("security.jwt.token.secret");
-    }
-
-    public static Integer getSecurityJwtTokenExpirationMins() {
-        return Integer.parseInt(message("security.jwt.token.expiration-minutes"));
-    }
-
     public static Integer getSkullKingOverPirateBonus() {
         return Integer.parseInt(message("game.trick.bonus.skull-king"));
     }

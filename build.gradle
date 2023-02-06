@@ -14,6 +14,10 @@ configurations {
 	}
 }
 
+bootJar {
+	exclude('application-local.properties')
+}
+
 repositories {
 	mavenCentral()
 }
