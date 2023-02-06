@@ -1,0 +1,7 @@
+.gradle/**
+.idea/**
+build/**
+src/main/webapp/dist/**
+src/main/webapp/node_modules/**
+src/main/resources/application-*.properties
+HELP.md

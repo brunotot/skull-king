@@ -1,0 +1,32 @@
+.table {
+	background-color: #fff;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+
+	& td,
+	& th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 0.5rem;
+	}
+
+	& thead tr:first-child {
+		background: #3498db;
+		color: #fff;
+	}
+
+	& .row__completed {
+		opacity: 0.5;
+	}
+
+	& .row__current {
+		outline: 1.5px solid green;
+		border-radius: 0.5rem;
+		box-shadow: rgb(14 30 37 / 12%) 0px 2px 4px 0px,
+			rgb(14 30 37 / 32%) 0px 2px 16px 0px;
+	}
+
+	& .row__uncompleted {
+	}
+}

@@ -1,0 +1,29 @@
+.radial_center {
+	width: fit-content;
+	background-color: red;
+	aspect-ratio: 1 / 1;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	inset: 50%;
+	border-radius: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.radial_edge {
+	position: absolute;
+	width: 7vw;
+	aspect-ratio: 1 / 1;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.radial_edge_content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
