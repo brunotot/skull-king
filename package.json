@@ -1,16 +1,5 @@
 {
 	"name": "skull-king",
 	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"build": ""
-	},
-	"engines": {
-		"node": "19.6.0",
-		"npm": "9.4.1"
-	},
-	"dependencies": {
-	},
-	"devDependencies": {
-	}
+	"type": "module"
 }
