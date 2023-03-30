@@ -40,11 +40,11 @@ export default function ActionCard({
 			isFromPlayground={false}
 			card={card}
 			onClick={() => handleOnClick()}
-			className={
+			className={`w-16 max-w-32 ${
 				disabled
 					? "opacity-60 cursor-not-allowed"
-					: "transition ease-in-out hover:-translate-y-2 cursor-pointer hover:outline-green-500 hover:outline hover:outline-4 hover:outline-offset-2 rounded-[20px]"
-			}
+					: "transition ease-in-out hover:-translate-y-2 cursor-pointer hover:outline-green-500 hover:outline hover:outline-4 hover:outline-offset-2 rounded-[0.25rem]"
+			}`}
 		/>
 	);
 }

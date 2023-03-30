@@ -4,7 +4,7 @@ export type PlaygroundBoxProps = {
 
 export default function PlaygroundBox({ children }: PlaygroundBoxProps) {
 	return (
-		<div className="relative flex items-center justify-center flex-1 border border-4 bg-opacity-50 bg-slate-400 rounded-full">
+		<div className="mt-[8.4rem] lg:mt-0 relative flex items-center justify-center flex-1">
 			{children}
 		</div>
 	);

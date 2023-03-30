@@ -6,6 +6,7 @@ import SocketService from "./services/SocketService";
 import AuthService from "./services/AuthService";
 import { UserDto } from "./dto/UserDto";
 import Content from "./components/layout/Content";
+import Shape from "./components/views/game/Shape";
 
 export const UserContext = createContext<IUserContext>({} as any);
 
@@ -31,8 +32,12 @@ function App() {
 		const initialSocketConnect = async () => {
 			const localStorageAuth = AuthService.user;
 			if (localStorageAuth) {
-				await SocketService.connect();
-				setAuth(localStorageAuth);
+				try {
+					await SocketService.connect();
+					setAuth(localStorageAuth);
+				} catch (err) {
+					AuthService.logout();
+				}
 			}
 			setInitialRenderFinish(true);
 		};

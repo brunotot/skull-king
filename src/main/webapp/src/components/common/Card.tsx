@@ -15,7 +15,7 @@ export default function Card(props: CardProps) {
 	return (
 		<div className="relative">
 			<ScaryMaryData card={card} isCardFromPlayground={isFromPlayground} />
-			<img onClick={onClick} className={`h-full ${className}`} src={image} />
+			<img onClick={onClick} className={`h-auto ${className}`} src={image} />
 		</div>
 	);
 }

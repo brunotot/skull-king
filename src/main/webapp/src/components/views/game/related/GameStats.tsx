@@ -1,8 +1,10 @@
-import React, { Fragment, useContext, useMemo } from "react";
+import React, {Fragment, useContext, useMemo, useState} from "react";
 import Phase from "../../../../enum/Phase";
 import { CardType } from "../../../../services/DeckService";
 import { GameContext } from "../GameView";
 import styles from "./../../../../assets/scss/module/GameStats.module.scss";
+import Button from "../../../ui/Button";
+import { faMinimize, faMaximize } from "@fortawesome/free-solid-svg-icons";
 
 export type Round = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export type Round1ExpectedWinners = 0 | 1;
@@ -79,21 +81,22 @@ const ROUNDS: Round[] = [...new Array(10)].map((v, i) => (i + 1) as Round);
 
 export default function GameStats() {
 	const state = useContext(GameContext);
+	const [expanded, setExpanded] = useState(false);
 	const { stats: data, round: currentRound } = state.gameState;
 	const playerNames = Object.keys(data);
 	const isGameOver = state.gameState.phase === Phase.GAME_OVER;
 
 	const RoundStatsRow = ({ round }: { round: Round }) => (
 		<tr
-			className={
-				round < currentRound || isGameOver
+			className={`${expanded ? '' : 'hidden'}
+				${round < currentRound || isGameOver
 					? styles["row__completed"]
 					: round === currentRound
 					? isGameOver
 						? ""
 						: styles["row__current"]
-					: styles["row__uncompleted"]
-			}
+					: styles["row__uncompleted"]}
+			`}
 		>
 			<td>{round}</td>
 			{playerNames.map((playerName) => (
@@ -130,7 +133,7 @@ export default function GameStats() {
 
 	const GameStatsHeaderRow = () => (
 		<tr>
-			<th></th>
+			<th><Button onClick={() => setExpanded(!expanded)} iconType={expanded ? faMinimize : faMaximize} tailwindColor={"green"} classNameAppend="text-black" /></th>
 			{playerNames.map((playerName) => (
 				<th colSpan={2} key={playerName}>
 					{playerName}
@@ -140,8 +143,8 @@ export default function GameStats() {
 	);
 
 	return (
-		<div>
-			<table className={styles.table}>
+		<div className="relative">
+			<table className={`${styles.table} z-10 absolute lg:relative`}>
 				<thead>
 					<GameStatsHeaderRow />
 				</thead>

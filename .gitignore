@@ -1,6 +1,7 @@
 .gradle/**
 .idea/**
 build/**
+node_modules/**
 src/main/webapp/dist/**
 src/main/webapp/node_modules/**
 src/main/webapp/.env.local

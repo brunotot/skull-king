@@ -23,7 +23,7 @@ export default function Pedestal() {
 
 	return (
 		<div className="flex flex-col gap-4 items-center">
-			<div className="text-3xl text-white pb-8">
+			<div className="text-center text-3xl text-white pb-8">
 				<span className="font-bold text-red-300">{winner.player}</span> wins
 				with {winner.points} points
 			</div>

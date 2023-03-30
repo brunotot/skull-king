@@ -9,18 +9,26 @@ export default abstract class ApiService {
 	}
 
 	protected async get<T>(endpoint: string = "") {
-		return (
-			await axios.get(`${this.uri}${endpoint}`, AxiosRequestService.config)
-		).data as T;
+		try {
+			return (
+				await axios.get(`${this.uri}${endpoint}`, AxiosRequestService.config)
+			).data as T;
+		} catch (err) {
+			alert(JSON.stringify(err));
+		}
 	}
 
 	protected async post<T>(endpoint: string = "", body: object = {}) {
-		return (
-			await axios.post(
-				`${this.uri}${endpoint}`,
-				body,
-				AxiosRequestService.config
-			)
-		).data as T;
+		try {
+			return (
+				await axios.post(
+					`${this.uri}${endpoint}`,
+					body,
+					AxiosRequestService.config
+				)
+			).data as T;
+		} catch (err) {
+			alert(JSON.stringify(err));
+		}
 	}
 }

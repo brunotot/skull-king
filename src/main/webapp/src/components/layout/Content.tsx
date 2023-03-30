@@ -9,7 +9,7 @@ import RegisterRoute from "../routes/RegisterRoute";
 
 export default function Content() {
 	return (
-		<div className="flex-1 w-full flex justify-center items-center p-8">
+		<div className="flex-1 w-full flex justify-center items-center p-2 lg:p-8">
 			<Routes>
 				<Route element={<PrivateRoutes />}>
 					<Route element={<HomeRoute />} path="/" />

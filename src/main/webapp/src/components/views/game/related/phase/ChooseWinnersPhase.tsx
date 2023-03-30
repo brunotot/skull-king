@@ -1,21 +1,29 @@
-import Button from "../../../../ui/Button";
-import { useContext } from "react";
-import { GameContext } from "../../GameView";
+import React, {useContext} from "react";
+import {GameContext} from "../../GameView";
 import AuthService from "../../../../../services/AuthService";
-import PlayerNotOnTurn from "../PlayerNotOnTurn";
-import GameStateService from "../../../../../services/GameStateService";
+import Shape from "../../Shape";
+import ChooseWinnersAction from "../action/ChooseWinnersAction";
+import Loader from "../../../../ui/Loader";
 
 export default function ChooseWinners() {
 	const { gameState } = useContext(GameContext);
-	const { round, currentPlayer, id } = gameState;
-	const thisUsername = AuthService.username;
-	const isThisPlayerOnTurn = thisUsername === currentPlayer;
+	const { round, currentPlayer } = gameState;
 
-	if (!isThisPlayerOnTurn) {
-		return <PlayerNotOnTurn />;
+	function render(player: string): React.ReactNode {
+		const isThisPlayerOnTurn = AuthService.username === currentPlayer;
+		const isCurrentPlayer = player === currentPlayer;
+		if (isThisPlayerOnTurn && isCurrentPlayer) {
+			return <ChooseWinnersAction round={round} />
+		}
+		if (isCurrentPlayer) {
+			return <Loader />
+		}
+		return null as any;
 	}
 
-	async function onExpectedWinnersChooseClick(expectedWinners: number) {
+	return <Shape render={render} />
+
+	/*async function onExpectedWinnersChooseClick(expectedWinners: number) {
 		await GameStateService.executeAction(id, expectedWinners);
 	}
 
@@ -36,5 +44,5 @@ export default function ChooseWinners() {
 				))}
 			</div>
 		</div>
-	);
+	);*/
 }
