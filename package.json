@@ -4,6 +4,6 @@
 	"type": "module",
 	"scripts": {
 		"dev": "cd src/main/webapp && xdg-open http://localhost:5173 && npm run dev",
-		"build": "cd src/main/webapp && npm run build"
+		"buildDev": "cd src/main/webapp && npm run build"
 	}
 }
