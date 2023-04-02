@@ -63,7 +63,7 @@ class GameStateService extends ApiService {
 	}
 
 	async findById(roomId: string): Promise<GameState> {
-		const gameStateDto = await this.get<GameStateDto>(`/${roomId}`);
+		const gameStateDto = await this.get<GameStateDto>(`/${roomId}`) as GameStateDto;
 		return this.convertGameState(gameStateDto);
 	}
 

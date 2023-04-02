@@ -3,6 +3,7 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "cd src/main/webapp && xdg-open http://localhost:5173 && npm run dev"
+		"dev": "cd src/main/webapp && xdg-open http://localhost:5173 && npm run dev",
+		"build": "cd src/main/webapp && npm run build"
 	}
 }

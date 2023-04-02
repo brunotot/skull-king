@@ -7,11 +7,11 @@ class RoomService extends ApiService {
 	}
 
 	async getAll() {
-		return await this.get<RoomDisplayDto[]>();
+		return await this.get<RoomDisplayDto[]>() as RoomDisplayDto[];
 	}
 
 	async create() {
-		return await this.post<RoomDisplayDto>();
+		return await this.post<RoomDisplayDto>() as RoomDisplayDto;
 	}
 
 	async enter(roomId: string) {
