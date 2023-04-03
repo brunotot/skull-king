@@ -14,6 +14,7 @@
 	border-radius: 0.75rem;
 	outline: 1px solid slateblue;
 	position: relative;
+	container-type: inline-size;
 }
 
 .playground > .player-box > .player-avatar::after {
