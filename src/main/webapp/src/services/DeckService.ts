@@ -1,5 +1,8 @@
 import ImageFactory, { PirateVersionKeys } from "../factory/ImageFactory";
 
+const SCARY_MARY_ESCAPE_ID = 65;
+const SCARY_MARY_PIRATE_ID = 66;
+
 type PointCardValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13;
 
 export type CardType = {
@@ -143,8 +146,8 @@ function buildDeck(): CardType[] {
 		getMermaidCard(63),
 		getMermaidCard(64),
 
-		getScaryMaryCard(65),
-		getScaryMaryCard(66),
+		getScaryMaryCard(SCARY_MARY_ESCAPE_ID),
+		getScaryMaryCard(SCARY_MARY_PIRATE_ID),
 
 		getSkullKingCard(67),
 	];
@@ -155,6 +158,18 @@ class DeckService {
 
 	constructor() {
 		this.deck = buildDeck();
+	}
+
+	isScaryMaryCard(cardId: number): boolean {
+		return [SCARY_MARY_ESCAPE_ID, SCARY_MARY_PIRATE_ID].includes(cardId);
+	}
+
+	getScaryMaryEscapeCardId(): number {
+		return this.getCard(SCARY_MARY_ESCAPE_ID).id;
+	}
+
+	getScaryMaryPirateCardId(): number {
+		return this.getCard(SCARY_MARY_PIRATE_ID).id;
 	}
 
 	getCard(id: number): CardType {

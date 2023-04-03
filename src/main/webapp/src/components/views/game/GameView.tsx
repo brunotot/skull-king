@@ -9,30 +9,6 @@ import { GameStateDto } from "../../../dto/GameStateDto";
 import usePrivateSocketHandler from "../../../hooks/usePrivateSocketHandler";
 import Shape from "./Shape";
 
-// TODO: Placeholder before backend data arrives
-/*const placeholder: GameState = {
-	hand: [DeckService.getCard(1)],
-	round: 1,
-	stats: {
-		Sanja: {
-			total: 0,
-			round: {},
-		},
-		Bruno: {
-			total: 0,
-			round: {},
-		},
-		Tihana: {
-			total: 0,
-			round: {},
-		},
-		Marko: {
-			total: 0,
-			round: {},
-		},
-	},
-};*/
-
 export type IGameContext = {
 	gameState: GameState;
 	setGameState: (gameState: GameState) => void;
@@ -66,7 +42,7 @@ export default function GameView() {
 		<>
 			{gameState && (
 				<GameContext.Provider value={ctx}>
-					<div className="h-full flex flex-1 flex-col p-4 gap-4">
+					<div className="h-full flex flex-1 flex-col gap-6">
 						<div className="flex flex-col-reverse lg:flex-row flex-1 gap-4 justify-between">
 							<Playground />
 							<GameStats />

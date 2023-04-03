@@ -1,9 +1,39 @@
 .player-hand {
+	--clr-bg: #2d409e;
+	--gap: 0.25rem;
+	--padd: 0.75rem;
 	display: flex;
-	justify-content: center;
-	gap: 0.5rem;
+	margin: 0 auto;
+	padding: var(--padd) var(--padd) 0 var(--padd);
+	background-color: var(--clr-bg);
+	gap: var(--gap);
+	border-radius: 0.75rem;
+	outline: 1px solid gold;
+	height: clamp(3rem, 40vw, 15rem);
+	overflow-x: scroll;
+	overflow-y: hidden;
+	width: 100%;
+	z-index: 0;
 
-	& img {
-		min-width: 0;
+	& > div {
+		flex: 0 0 auto;
+	}
+
+	&::-webkit-scrollbar {
+		height: 0.75rem;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--clr-bg);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: #3498db;
+		border-bottom-left-radius: 100vw;
+		border-bottom-right-radius: 100vw;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background: #c4e5fa;
 	}
 }

@@ -1,29 +1,107 @@
-.radial_center {
-	width: fit-content;
-	background-color: red;
-	aspect-ratio: 1 / 1;
-	position: absolute;
-	transform: translate(-50%, -50%);
-	inset: 50%;
-	border-radius: 50%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+:root {
+	--spacer: 0.4125rem;
+	--background: rgba(51, 65, 85, 1);
+	--text-color: white;
+	--ratio: calc(50 / 32);
+	--height: 100%;
+	--height-sm: calc(var(--height) / 4);
+	--height-lg: calc(var(--height-sm) * 2);
 }
 
-.radial_edge {
-	position: absolute;
-	width: 7vw;
-	aspect-ratio: 1 / 1;
-	margin: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.radial_edge_content {
-	display: flex;
-	flex-direction: column;
+.playground {
+	height: var(--height);
 	width: 100%;
+	border-radius: 0.75rem;
+	outline: 1px solid slateblue;
+	position: relative;
+}
+
+.playground > .player-box > .player-avatar::after {
+	content: attr(data-username);
+	position: relative;
+	display: flex;
+	width: fit-content;
+	padding: 0.125rem 0.25rem;
+	text-align: center;
+	background: var(--background);
+	border-radius: 0.25rem;
+	outline: 1px solid slateblue;
+	color: var(--text-color);
+}
+
+.playground > .player-box > .player-action {
+	position: absolute;
+}
+
+.playground > .player-box:is([data-pos="5"], [data-pos="6"]) > .player-action {
+	top: 50%;
+	transform: translate(calc(100% + var(--spacer)), -50%);
+}
+
+.playground > .player-box:is([data-pos="2"], [data-pos="3"]) > .player-action {
+	top: 50%;
+	transform: translate(calc(-100% - var(--spacer)), -50%);
+}
+
+.playground > .player-box:is([data-pos="1"]) > .player-action {
+	top: 0;
+	transform: translateY(calc(-100% - var(--spacer)));
+}
+
+.playground > .player-box:is([data-pos="4"]) > .player-action {
+	bottom: 0;
+	transform: translateY(calc(100% + var(--spacer)));
+}
+
+.playground > .player-box {
+	--x: 0;
+	--y: 0;
+	position: absolute;
+	transform: translate(var(--x), var(--y));
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.playground > .player-box[data-pos="1"] {
+	--y: 50%;
+	--x: -50%;
+	bottom: 0;
+	left: 50%;
+}
+
+.playground > .player-box[data-pos="2"] {
+	--x: 50%;
+	--y: 50%;
+	right: 0;
+	bottom: var(--height-sm);
+}
+
+.playground > .player-box[data-pos="3"] {
+	--x: 50%;
+	--y: -50%;
+	right: 0;
+	top: var(--height-sm);
+}
+
+.playground > .player-box[data-pos="4"] {
+	--y: -50%;
+	--x: -50%;
+	top: 0;
+	left: 50%;
+}
+
+.playground > .player-box[data-pos="5"] {
+	--x: -50%;
+	--y: -50%;
+	left: 0;
+	top: var(--height-sm);
+}
+
+.playground > .player-box[data-pos="6"] {
+	--x: -50%;
+	--y: 50%;
+	left: 0;
+	bottom: var(--height-sm);
 }

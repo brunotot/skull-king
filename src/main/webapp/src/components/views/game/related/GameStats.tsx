@@ -5,6 +5,7 @@ import { GameContext } from "../GameView";
 import styles from "./../../../../assets/scss/module/GameStats.module.scss";
 import Button from "../../../ui/Button";
 import { faMinimize, faMaximize } from "@fortawesome/free-solid-svg-icons";
+import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 
 export type Round = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export type Round1ExpectedWinners = 0 | 1;
@@ -87,8 +88,8 @@ export default function GameStats() {
 	const isGameOver = state.gameState.phase === Phase.GAME_OVER;
 
 	const RoundStatsRow = ({ round }: { round: Round }) => (
-		<tr
-			className={`${expanded ? '' : 'hidden'}
+		<TableRow
+			className={`${expanded ? '' : '!hidden'}
 				${round < currentRound || isGameOver
 					? styles["row__completed"]
 					: round === currentRound
@@ -98,64 +99,73 @@ export default function GameStats() {
 					: styles["row__uncompleted"]}
 			`}
 		>
-			<td>{round}</td>
+			<TableCell>{round}</TableCell>
 			{playerNames.map((playerName) => (
 				<Fragment key={playerName}>
-					<td>{data[playerName].round[round]?.expectedWinners}</td>
-					<td>{data[playerName].round[round]?.points}</td>
+					<TableCell>{data[playerName].round[round]?.expectedWinners}</TableCell>
+					<TableCell>{data[playerName].round[round]?.points}</TableCell>
 				</Fragment>
 			))}
-		</tr>
+		</TableRow>
 	);
 
 	const TotalStatsRow = () => (
-		<tr>
-			<td>Σ</td>
+		<TableRow>
+			<TableCell>Σ</TableCell>
 			{playerNames.map((playerName) => (
-				<td colSpan={2} key={playerName}>
+				<TableCell colSpan={2} key={playerName}>
 					{data[playerName].total}
-				</td>
+				</TableCell>
 			))}
-		</tr>
+		</TableRow>
 	);
 
 	const CurrentWinners = () => (
-		<tr className={styles["row__current"]}>
-			<td>{currentRound}</td>
+		<TableRow className={styles["row__current"]}>
+			<TableCell>{currentRound}</TableCell>
 			{playerNames.map((playerName) => (
 				<React.Fragment key={playerName}>
-					<td>{data[playerName].round[currentRound]?.expectedWinners}</td>
-					<td>{data[playerName].round[currentRound]?.actualWinners}</td>
+					<TableCell>{data[playerName].round[currentRound]?.expectedWinners}</TableCell>
+					<TableCell>{data[playerName].round[currentRound]?.actualWinners}</TableCell>
 				</React.Fragment>
 			))}
-		</tr>
+		</TableRow>
 	);
 
 	const GameStatsHeaderRow = () => (
-		<tr>
-			<th><Button onClick={() => setExpanded(!expanded)} iconType={expanded ? faMinimize : faMaximize} tailwindColor={"green"} classNameAppend="text-black" /></th>
+		<TableRow>
+			<TableCell>
+				<Button
+					onClick={() => setExpanded(!expanded)}
+					iconType={expanded ? faMinimize : faMaximize}
+					tailwindColor={"green"}
+					classNameAppend="text-black"
+				/>
+			</TableCell>
 			{playerNames.map((playerName) => (
-				<th colSpan={2} key={playerName}>
+				<TableCell colSpan={2} key={playerName}>
 					{playerName}
-				</th>
+				</TableCell>
 			))}
-		</tr>
+		</TableRow>
 	);
 
 	return (
 		<div className="relative">
-			<table className={`${styles.table} z-10 absolute lg:relative`}>
-				<thead>
-					<GameStatsHeaderRow />
-				</thead>
-				<tbody>
-					{!isGameOver && <CurrentWinners />}
-					<TotalStatsRow />
-					{ROUNDS.map((round) => (
-						<RoundStatsRow key={round} round={round} />
-					))}
-				</tbody>
-			</table>
+			<TableContainer component={Paper}>
+				<Table size="small" className={`${styles.table} z-10 absolute lg:relative`}>
+					<TableHead>
+						<GameStatsHeaderRow />
+					</TableHead>
+					<TableBody>
+						{!isGameOver && <CurrentWinners />}
+						<TotalStatsRow />
+						{ROUNDS.map((round) => (
+							<RoundStatsRow key={round} round={round} />
+						))}
+					</TableBody>
+				</Table>
+			</TableContainer>
 		</div>
 	);
 }
